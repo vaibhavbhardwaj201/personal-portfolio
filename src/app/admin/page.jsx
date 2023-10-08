@@ -32,7 +32,21 @@ const AdminView = () => {
     ]
 
   return (
-    <div>AdminView</div>
+    <div className='border-b border-gray-200'>
+        <nav className='-mb-0.5 flex justify-center space-x-6' role='tablist'>
+            {
+                menuItem.map(item => (
+                    <button 
+                        key={item.id} 
+                        type='button'
+                        className='p-4 font-bold text-xl text-black'>
+                        {item.label}
+                    </button>
+                ))
+            }
+        </nav>
+        
+    </div>
   )
 }
 

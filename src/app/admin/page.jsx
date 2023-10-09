@@ -1,33 +1,48 @@
 "use client"
 
-import React from 'react'
+import { useState } from 'react'
+
+import AboutAdminView from '@/components/admin-view/about'
+import ContactAdminView from '@/components/admin-view/contact'
+import EducationAdminView from '@/components/admin-view/education'
+import ExperienceAdminView from '@/components/admin-view/experience'
+import HomeAdminView from '@/components/admin-view/home'
+import ProjectsAdminView from '@/components/admin-view/projects'
 
 const AdminView = () => {
+
+    const [currentSelectedTab, setCurrentSelectedTab] = useState('home')
 
     const menuItem = [
         {
             id: 'home',
-            label: 'Home'
+            label: 'Home',
+            component: <HomeAdminView />
         },
         {
             id: 'about',
-            label: 'About'
+            label: 'About',
+            component: <AboutAdminView />
         },
         {
             id: 'experience',
-            label: 'Experience'
+            label: 'Experience',
+            component: <ExperienceAdminView />
         },
         {
             id: 'education',
-            label: 'Education'
+            label: 'Education',
+            component: <EducationAdminView />
         },
         {
             id: 'projects',
-            label: 'Projects'
+            label: 'Projects',
+            component: <ProjectsAdminView />
         },
         {
             id: 'contact',
-            label: 'Contact'
+            label: 'Contact',
+            component: <ContactAdminView />
         },
     ]
 
@@ -39,13 +54,18 @@ const AdminView = () => {
                     <button 
                         key={item.id} 
                         type='button'
-                        className='p-4 font-bold text-xl text-black'>
+                        className='p-4 font-bold text-xl text-black'
+                        onClick={() => setCurrentSelectedTab(item.id)} >
                         {item.label}
                     </button>
                 ))
             }
         </nav>
-        
+        <div className="mt-10 p-10">
+            {
+                menuItem.map(item => item.id === currentSelectedTab && item.component)
+            }
+        </div>
     </div>
   )
 }

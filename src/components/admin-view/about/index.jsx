@@ -2,10 +2,10 @@
 
 import React from 'react'
 
-const AdminAboutView = () => {
+const AboutAdminView = () => {
   return (
     <div>About</div>
   )
 }
 
-export default AdminAboutView
+export default AboutAdminView
